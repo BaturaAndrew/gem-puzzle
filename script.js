@@ -21,10 +21,7 @@ class GameArea {
     this.x = 0;
     this.y = 0;
   }
-  start() {
-    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    setInterval(updateGameArea, 50);
-  }
+
   clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
@@ -87,6 +84,7 @@ const area = new GameArea();
 window.addEventListener("click", function (e) {
   area.x = e.pageX;
   area.y = e.pageY;
+  updateGameArea(); // FIXME:
 });
 
 function startGame() {
@@ -111,8 +109,6 @@ function startGame() {
 
     cubes.push(cube);
   }
-
-  area.start();
 }
 
 function updateGameArea() {
